@@ -1,0 +1,76 @@
+<nav class="navbar navbar-light bg-light"><a class="navbar-brand" href="#">
+    <img class="d-inline-block align-top" src="/assets/brand/bootstrap-solid.svg" alt="" width="30" height="30" />
+    Bootstrap
+    </a></nav>
+
+
+
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  
+ 
+</div>
+
+
+<button (click)="loadUser()">Load profile</button>
+    
+
+    <div *ngFor="let d of profile">
+        Key: <input type="text" value="{{d.key}}"><br>
+        value: <input type="text" value="{{d.value}}"><br>
+
+       
+    </div>
+
+
+    <ul *ngFor="let d of profile">
+        <li>{{d.key}}</li>
+        <li>{{d.value}}</li>
+
+    </ul>
+
+
+    <button (click) ="addKeyValue($event)">Add</button>
+
+
+    <!-- <p *ngIf="postResponse !== undefined">Inserted record id: {{postResponse}}</p> -->
+    <form (ngSubmit)="submit(employee)" >
+  name:<br>
+  <input type="text" [ngModel]="name" name="name"><br>
+
+   job:<br>
+  <input type="text" [(ngModel)]="employee.body" name="body" ><br>
+  <div *ngIf="employee.body == null" style="color:red">Please enter valid body</div>
+  <button type="submit">Submit</button>
+</form> 
+
+
+<h1>{{city}}</h1>
+
+<div class="row">
+    <div class="col-md-3">
+      <div style="display: block;">
+      <canvas baseChart width="200" height="200"
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+    <div class="col-md-6" style="margin-bottom: 10px">
+      <table class="table table-responsive table-condensed">
+        <tr>
+          <th *ngFor="let label of lineChartLabels">{{label}}</th>
+        </tr>
+        <tr *ngFor="let d of lineChartData">
+          <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+        </tr>
+      </table>
+      <button (click)="randomize()">CLICK</button>
+    </div>
+  </div>
+
